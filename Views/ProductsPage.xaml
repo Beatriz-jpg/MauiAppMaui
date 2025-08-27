@@ -1,0 +1,28 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MeuAppMaui.ViewModels"
+             x:Class="MeuAppMaui.Views.ProductsPage"
+             Title="Produtos">
+    <ContentPage.BindingContext>
+        <vm:ProductsViewModel />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout Padding="12" Spacing="8">
+        <aaaaa x:Name="searchBar" Placeholder="Digite para buscar"
+                   TextChanged="SearchBar_TextChanged" />
+
+        <CollectionView ItemsSource="{Binding FilteredProducts}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Margin="0,6" Padding="10">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Name}" FontAttributes="Bold"/>
+                            <Label Text="{Binding Category}" />
+                            <Label Text="{Binding Price, StringFormat='Preço: {0:C}'}" />
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>
